@@ -12,14 +12,14 @@ class LoginPage extends StatelessWidget {
           child: Stack(
             children: [
               Positioned(
-                  top: -90,
-                  right: -50,
+                  top: -100,
+                  right:-70,
                   child: _circleLogin()
               ),
               Positioned(
                 child: _textLogin(),
                 top: 60,
-                right: 20,
+                right: 5,
               ),
               SingleChildScrollView(
                 child: Column(
