@@ -7,36 +7,38 @@ import 'login_controller.dart';
 class LoginPage extends StatelessWidget {
 
   LoginController con = LoginController();
-
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Container(
-          width: double.infinity,
-          child: Stack(
-            children: [
-              Positioned(
-                  top: -100,
-                  right:-70,
-                  child: _circleLogin()
-              ),
-              Positioned(
-                child: _textLogin(),
-                top: 60,
-                right: 5,
-              ),
-              SingleChildScrollView(
-                child: Column(
-                  children: [
-                    _imageBanner(context),
-                    _textFieldEmail(),
-                    _textFieldPassword(),
-                    _buttonLogin(),
-                    _textDontHaveAccount()
-                  ],
+        body: SingleChildScrollView(
+          child: Container(
+            width: double.infinity,
+            child: Stack(
+              children: [
+                Positioned(
+                    top: -120,
+                    right:-70,
+                    child: _circleLogin()
                 ),
-              )
-            ],
+                Positioned(
+                  child: _textLogin(),
+                  top: 40,
+                  right: 5,
+                ),
+                SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      _imageBanner(context),
+                      _textFieldEmail(),
+                      _textFieldPassword(),
+                      _buttonLogin(),
+                      _textDontHaveAccount()
+                    ],
+                  ),
+                )
+              ],
+            ),
           ),
         )
     );
@@ -87,6 +89,7 @@ class LoginPage extends StatelessWidget {
           borderRadius: BorderRadius.circular(20)
       ),
       child: TextField(
+        controller: con.emailController,
         decoration: InputDecoration(
             hintText: 'Correo Electrónico',
             border: InputBorder.none,
@@ -111,6 +114,7 @@ class LoginPage extends StatelessWidget {
           borderRadius: BorderRadius.circular(20)
       ),
       child: TextField(
+        controller: con.passwordController,
         decoration: InputDecoration(
             hintText: 'Contraseña',
             border: InputBorder.none,
@@ -132,7 +136,7 @@ class LoginPage extends StatelessWidget {
       width: double.infinity,
       margin: const EdgeInsets.symmetric(horizontal: 50, vertical: 20),
       child: ElevatedButton(
-        onPressed: () {},
+        onPressed: () => con.login(),
         child: const Text('Ingresar'),
         style: ElevatedButton.styleFrom(
             primary: MyColors.primaryColor,
@@ -146,30 +150,34 @@ class LoginPage extends StatelessWidget {
   }
 
   Widget _textDontHaveAccount(){
-    return  Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Text(
-          'No tienes cuenta?',
-          style: TextStyle(
-              fontWeight: FontWeight.bold,
-              color:  MyColors.primaryColorDark
-          ),
-        ),
-        const SizedBox(width: 7),
-        GestureDetector(
-          onTap: () {
-            Get.toNamed('/register');
-          },
-          child: Text(
-            'Registrate',
+    return Container(
+      width: double.infinity,
+      margin: const EdgeInsets.symmetric(horizontal: 50, vertical: 20),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(
+            'No tienes cuenta?',
             style: TextStyle(
                 fontWeight: FontWeight.bold,
-                color:  MyColors.primaryColor
+                color:  MyColors.primaryColorDark
             ),
           ),
-        ),
-      ],
+          const SizedBox(width: 7),
+          GestureDetector(
+            onTap: () {
+              Get.toNamed('/register');
+            },
+            child: Text(
+              'Registrate',
+              style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  color:  MyColors.primaryColor
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 
