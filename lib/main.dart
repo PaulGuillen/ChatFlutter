@@ -24,7 +24,7 @@ class _MyAppState extends State<MyApp> {
         'login' : (BuildContext context ) => const LoginPage()
       },
       theme: ThemeData(
-        colorScheme: ColorScheme.light().copyWith(primary: MyColors.primaryColor),
+        colorScheme: const ColorScheme.light().copyWith(primary: MyColors.primaryColor),
       ),
     );
   }

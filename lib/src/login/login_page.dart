@@ -33,33 +33,82 @@ class _LoginPageState extends State< LoginPage> {
   }
 
   Widget _imageBanner(){
-    return Image.asset(
-      'assets/img/delivery.png',
-      width: 200,
-      height: 200,
+    return Container(
+      margin: EdgeInsets.only(
+          top: 100,
+          bottom: MediaQuery.of(context).size.height * 0.15
+      ),
+      child: Image.asset(
+        'assets/img/delivery.png',
+        width: 200,
+        height: 200,
+      ),
     );
   }
 
   Widget _textFieldEmail(){
-    return const TextField(
-      decoration: InputDecoration(
-          hintText: 'Correo Electrónico'
+    return Container(
+      margin: const EdgeInsets.symmetric(horizontal: 50,vertical: 5),
+      decoration: BoxDecoration(
+        color: MyColors.primaryOpacityColor,
+        borderRadius: BorderRadius.circular(20)
+      ),
+      child: TextField(
+        decoration: InputDecoration(
+            hintText: 'Correo Electrónico',
+            border: InputBorder.none,
+            contentPadding: const EdgeInsets.all(15),
+            hintStyle: TextStyle(
+              color: MyColors.primaryColorDark
+            ),
+            prefixIcon: Icon(
+                Icons.email,
+                color: MyColors.primaryColor
+            )
+        ),
       ),
     );
   }
 
   Widget _textFieldPassword(){
-    return const TextField(
-      decoration: InputDecoration(
-          hintText: 'Contraseña'
+    return Container(
+      margin: const EdgeInsets.symmetric(horizontal: 50, vertical: 5),
+      decoration: BoxDecoration(
+          color: MyColors.primaryOpacityColor,
+          borderRadius: BorderRadius.circular(20)
+      ),
+      child: TextField(
+        decoration: InputDecoration(
+            hintText: 'Contraseña',
+            border: InputBorder.none,
+            contentPadding: const EdgeInsets.all(15),
+            hintStyle: TextStyle(
+                color: MyColors.primaryColorDark
+            ),
+            prefixIcon: Icon(
+                Icons.lock,
+                color: MyColors.primaryColor
+            )
+        ),
       ),
     );
   }
 
   Widget _buttonLogin(){
-    return  ElevatedButton(
-      onPressed: () {},
-      child: const Text('Ingresar'),
+    return  Container(
+      width: double.infinity,
+      margin: const EdgeInsets.symmetric(horizontal: 50, vertical: 20),
+      child: ElevatedButton(
+        onPressed: () {},
+        child: const Text('Ingresar'),
+        style: ElevatedButton.styleFrom(
+          primary: MyColors.primaryColor,
+          shape : RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(15)
+          ),
+          padding: const EdgeInsets.symmetric(vertical: 15)
+        ),
+      ),
     );
   }
 
@@ -71,7 +120,7 @@ class _LoginPageState extends State< LoginPage> {
           'No tienes cuenta?',
           style: TextStyle(
               fontWeight: FontWeight.bold,
-              color:  MyColors.primaryColor
+              color:  MyColors.primaryColorDark
           ),
         ),
         const SizedBox(width: 7),
