@@ -1,48 +1,41 @@
 import 'package:chat_flutter/src/utils/my_colors.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
-class  LoginPage extends StatefulWidget {
-  const  LoginPage({Key? key}) : super(key: key);
-
-  @override
-  State< LoginPage> createState() => _LoginPageState();
-}
-
-class _LoginPageState extends State< LoginPage> {
-
+class LoginPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       //Evitar el redimensionamietno de la app - es malo
-      resizeToAvoidBottomInset: false,
-      body: SizedBox(
-        width: double.infinity,
-        child: Stack(
-          children: [
-            Positioned(
-              top: -80,
-              left: -65,
-                child: _circleLogin()
-            ),
-            Positioned(
-                child: _textLogin(),
-                top: 60,
-                left: 10,
-            ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
+        resizeToAvoidBottomInset: false,
+        body: SizedBox(
+          width: double.infinity,
+          child: Stack(
             children: [
-              _imageBanner(),
-              _textFieldEmail(),
-              _textFieldPassword(),
-              _buttonLogin(),
-              _textDonHaveAccount()
+              Positioned(
+                  top: -100,
+                  left: -55,
+                  child: _circleLogin()
+              ),
+              Positioned(
+                child: _textLogin(),
+                top: 40,
+                left: 10,
+              ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  _imageBanner(context),
+                  _textFieldEmail(),
+                  _textFieldPassword(),
+                  _buttonLogin(),
+                  _textDonHaveAccount()
+                ],
+              ),
             ],
-            ),
-          ],
-        ),
-      )
+          ),
+        )
     );
   }
 
@@ -51,8 +44,8 @@ class _LoginPageState extends State< LoginPage> {
       width: 240,
       height: 230,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(100),
-        color: MyColors.primaryColor
+          borderRadius: BorderRadius.circular(100),
+          color: MyColors.primaryColor
       ),
     );
   }
@@ -61,21 +54,22 @@ class _LoginPageState extends State< LoginPage> {
     return Text(
       'Inicio de Sesión',
       style: TextStyle(
-        color: Colors.white,
-        fontWeight: FontWeight.bold,
-        fontSize: 20
+          color: Colors.white,
+          fontWeight: FontWeight.bold,
+          fontSize: 20,
+          fontFamily: 'SafeArea'
       ),
     );
   }
 
-  Widget _imageBanner(){
+  Widget _imageBanner(BuildContext context){
     return Container(
       margin: EdgeInsets.only(
-          top: 100,
+          top: 120,
           bottom: MediaQuery.of(context).size.height * 0.15
       ),
       child: Image.asset(
-        'assets/img/delivery.png',
+        'assets/img/chat.png',
         width: 200,
         height: 200,
       ),
@@ -86,8 +80,8 @@ class _LoginPageState extends State< LoginPage> {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 50,vertical: 5),
       decoration: BoxDecoration(
-        color: MyColors.primaryOpacityColor,
-        borderRadius: BorderRadius.circular(20)
+          color: MyColors.primaryOpacityColor,
+          borderRadius: BorderRadius.circular(20)
       ),
       child: TextField(
         decoration: InputDecoration(
@@ -95,7 +89,7 @@ class _LoginPageState extends State< LoginPage> {
             border: InputBorder.none,
             contentPadding: const EdgeInsets.all(15),
             hintStyle: TextStyle(
-              color: MyColors.primaryColorDark
+                color: MyColors.primaryColorDark
             ),
             prefixIcon: Icon(
                 Icons.email,
@@ -138,11 +132,11 @@ class _LoginPageState extends State< LoginPage> {
         onPressed: () {},
         child: const Text('Ingresar'),
         style: ElevatedButton.styleFrom(
-          primary: MyColors.primaryColor,
-          shape : RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(15)
-          ),
-          padding: const EdgeInsets.symmetric(vertical: 15)
+            primary: MyColors.primaryColor,
+            shape : RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(15)
+            ),
+            padding: const EdgeInsets.symmetric(vertical: 15)
         ),
       ),
     );
@@ -160,11 +154,16 @@ class _LoginPageState extends State< LoginPage> {
           ),
         ),
         const SizedBox(width: 7),
-        Text(
-          'Registrate',
-          style: TextStyle(
-              fontWeight: FontWeight.bold,
-              color:  MyColors.primaryColor
+        GestureDetector(
+          onTap: () {
+            Get.toNamed('/register');
+          },
+          child: Text(
+            'Registrate',
+            style: TextStyle(
+                fontWeight: FontWeight.bold,
+                color:  MyColors.primaryColor
+            ),
           ),
         ),
       ],
@@ -172,5 +171,3 @@ class _LoginPageState extends State< LoginPage> {
   }
 
 }
-
-

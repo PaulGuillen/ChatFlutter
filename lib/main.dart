@@ -1,6 +1,9 @@
-import 'package:chat_flutter/src/login/login_page.dart';
+
+import 'package:chat_flutter/src/pages/login/login_page.dart';
+import 'package:chat_flutter/src/pages/register/register_page.dart';
 import 'package:chat_flutter/src/utils/my_colors.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,16 +19,19 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    return  MaterialApp(
+    return  GetMaterialApp(
       title: 'Chat App Flutter',
       debugShowCheckedModeBanner: false,
-      initialRoute: 'login',
-      routes: {
-        'login' : (BuildContext context ) => const LoginPage()
-      },
+      initialRoute: '/',
+      getPages: [
+        GetPage(name: '/' , page:() => LoginPage()),
+        GetPage(name: '/register' , page:() => RegisterPage()),
+      ],
       theme: ThemeData(
-        colorScheme: const ColorScheme.light().copyWith(primary: MyColors.primaryColor),
+          // colorScheme: const ColorScheme.light().copyWith(primary: MyColors.primaryColor),
+          primaryColor: MyColors.primaryColor
       ),
+      navigatorKey: Get.key,
     );
   }
 }
