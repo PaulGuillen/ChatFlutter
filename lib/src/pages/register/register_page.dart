@@ -119,6 +119,7 @@ class RegisterPage extends StatelessWidget {
     );
   }
 
+  //ConfirmPassword
   Widget _textFieldConfirmPassword() {
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 50, vertical: 5),
