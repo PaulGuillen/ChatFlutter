@@ -18,17 +18,53 @@ class _LoginPageState extends State< LoginPage> {
       resizeToAvoidBottomInset: false,
       body: SizedBox(
         width: double.infinity,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          _imageBanner(),
-          _textFieldEmail(),
-          _textFieldPassword(),
-          _buttonLogin(),
-          _textDonHaveAccount()
-        ],
+        child: Stack(
+          children: [
+            Positioned(
+              top: -80,
+              left: -65,
+                child: _circleLogin()
+            ),
+            Positioned(
+                child: _textLogin(),
+                top: 60,
+                left: 10,
+            ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              _imageBanner(),
+              _textFieldEmail(),
+              _textFieldPassword(),
+              _buttonLogin(),
+              _textDonHaveAccount()
+            ],
+            ),
+          ],
         ),
       )
+    );
+  }
+
+  Widget _circleLogin(){
+    return Container(
+      width: 240,
+      height: 230,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(100),
+        color: MyColors.primaryColor
+      ),
+    );
+  }
+
+  Widget _textLogin(){
+    return Text(
+      'Inicio de Sesión',
+      style: TextStyle(
+        color: Colors.white,
+        fontWeight: FontWeight.bold,
+        fontSize: 20
+      ),
     );
   }
 
