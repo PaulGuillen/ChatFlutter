@@ -7,32 +7,31 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      //Evitar el redimensionamietno de la app - es malo
-        resizeToAvoidBottomInset: false,
-        body: SizedBox(
+        body: Container(
           width: double.infinity,
           child: Stack(
             children: [
               Positioned(
-                  top: -100,
-                  left: -55,
+                  top: -90,
+                  right: -50,
                   child: _circleLogin()
               ),
               Positioned(
                 child: _textLogin(),
-                top: 40,
-                left: 10,
+                top: 60,
+                right: 20,
               ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  _imageBanner(context),
-                  _textFieldEmail(),
-                  _textFieldPassword(),
-                  _buttonLogin(),
-                  _textDonHaveAccount()
-                ],
-              ),
+              SingleChildScrollView(
+                child: Column(
+                  children: [
+                    _imageBanner(context),
+                    _textFieldEmail(),
+                    _textFieldPassword(),
+                    _buttonLogin(),
+                    _textDontHaveAccount()
+                  ],
+                ),
+              )
             ],
           ),
         )
@@ -142,7 +141,7 @@ class LoginPage extends StatelessWidget {
     );
   }
 
-  Widget _textDonHaveAccount(){
+  Widget _textDontHaveAccount(){
     return  Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
