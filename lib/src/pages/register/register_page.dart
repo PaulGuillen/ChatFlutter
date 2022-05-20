@@ -11,45 +11,45 @@ class RegisterPage extends StatelessWidget {
   Widget build(BuildContext context) {
 
     return Scaffold(
-        body: Container(
-          width: double.infinity,
-          child: Stack(
-            children: [
-              Positioned(
-                  top: -80,
-                  left: -100,
-                  child: _circleLogin()
-              ),
-              Positioned(
-                child: _textRegister(),
-                top: 65,
-                left: 27,
-              ),
-              Positioned(
-                child: _iconBack(),
-                top: 53,
-                left: -5,
-              ),
-              Container(
-                width: double.infinity,
-                margin: EdgeInsets.only(top: 150),
-                child: SingleChildScrollView(
-                  child: Column(
-                    children: [
-                      _imageUser(context),
-                      SizedBox(height: 30),
-                      _textFieldEmail(),
-                      _textFieldName(),
-                      _textFieldLastName(),
-                      _textFieldPhone(),
-                      _textFieldPassword(),
-                      _textFieldConfirmPassword(),
-                      _buttonRegister(),
-                    ],
-                  ),
+        body: SingleChildScrollView(
+          child: Container(
+            width: double.infinity,
+            child: Stack(
+              children: [
+                Positioned(
+                    top: -80,
+                    left: -80,
+                    child: _circleLogin()
                 ),
-              )
-            ],
+                Positioned(
+                  child: _textRegister(),
+                  top: 65,
+                  left: 27,
+                ),
+                Positioned(
+                  child: _iconBack(),
+                  top: 53,
+                  left: -5,
+                ),
+                Container(
+                  width: double.infinity,
+                  margin: EdgeInsets.only(top: 150),
+                    child: Column(
+                      children: [
+                        _imageUser(context),
+                        SizedBox(height: 30),
+                        _textFieldEmail(),
+                        _textFieldName(),
+                        _textFieldLastName(),
+                        _textFieldPhone(),
+                        _textFieldPassword(),
+                        _textFieldConfirmPassword(),
+                        _buttonRegister(),
+                      ],
+                    ),
+                )
+              ],
+            ),
           ),
         )
     );

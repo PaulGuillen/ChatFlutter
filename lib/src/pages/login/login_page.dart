@@ -2,7 +2,11 @@ import 'package:chat_flutter/src/utils/my_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import 'login_controller.dart';
+
 class LoginPage extends StatelessWidget {
+
+  LoginController con = LoginController();
 
   @override
   Widget build(BuildContext context) {
