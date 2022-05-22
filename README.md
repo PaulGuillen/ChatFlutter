@@ -1,6 +1,6 @@
 # chat_flutter
 
-A new Flutter project.
+Project in progress.....
 
 ## Getting Started
 
