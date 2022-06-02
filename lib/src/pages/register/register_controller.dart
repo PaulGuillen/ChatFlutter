@@ -44,7 +44,7 @@ class RegisterController extends GetxController {
 
       if(response.body['success'] == true){
         clearForm();
-        Get.snackbar('Formulario válido', 'Registro exitoso');
+        Get.snackbar('Formulario valido', 'Registro exitoso');
       }
 
       print('Response: ${response.body}');
