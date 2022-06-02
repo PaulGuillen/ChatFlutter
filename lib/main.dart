@@ -1,4 +1,3 @@
-
 import 'package:chat_flutter/src/pages/login/login_page.dart';
 import 'package:chat_flutter/src/pages/register/register_page.dart';
 import 'package:chat_flutter/src/utils/my_colors.dart';
