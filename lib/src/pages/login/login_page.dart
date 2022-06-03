@@ -106,25 +106,26 @@ class LoginPage extends StatelessWidget {
     );
   }
 
-  Widget _textFieldPassword(){
+  Widget _textFieldPassword() {
     return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 50, vertical: 5),
+      margin: EdgeInsets.symmetric(horizontal: 50, vertical: 5),
       decoration: BoxDecoration(
           color: MyColors.primaryOpacityColor,
-          borderRadius: BorderRadius.circular(20)
+          borderRadius: BorderRadius.circular(30)
       ),
       child: TextField(
         controller: con.passwordController,
+        obscureText: true,
         decoration: InputDecoration(
             hintText: 'Contraseña',
             border: InputBorder.none,
-            contentPadding: const EdgeInsets.all(15),
+            contentPadding: EdgeInsets.all(15),
             hintStyle: TextStyle(
                 color: MyColors.primaryColorDark
             ),
             prefixIcon: Icon(
-                Icons.lock,
-                color: MyColors.primaryColor
+              Icons.lock,
+              color: MyColors.primaryColor,
             )
         ),
       ),
