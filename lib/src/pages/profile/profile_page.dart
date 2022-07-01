@@ -66,7 +66,7 @@ class ProfilePage extends StatelessWidget {
             child: FadeInImage.assetNetwork(
                 fit: BoxFit.cover,
                 placeholder: 'assets/img/user_profile_2.png',
-                image: 'https://img.freepik.com/foto-gratis/retrato-joven-sonriente-gafas_171337-4842.jpg?w=2000'
+                image: con.user.image!
             ),
           ),
         ),

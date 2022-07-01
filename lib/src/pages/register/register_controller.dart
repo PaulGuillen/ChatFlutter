@@ -1,11 +1,14 @@
 
+import 'dart:convert';
 import 'dart:io';
 
+import 'package:chat_flutter/src/models/response_api.dart';
 import 'package:chat_flutter/src/models/users.dart';
 import 'package:chat_flutter/src/provider/users_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:get_storage/get_storage.dart';
 
 class RegisterController extends GetxController {
 
@@ -49,16 +52,29 @@ class RegisterController extends GetxController {
           password: password
       );
 
-      Response  response =  await usersProvider.create(user);
 
-      if(response.body['success'] == true){
-        clearForm();
-        Get.snackbar('Formulario valido', 'Registro exitoso');
-      }
+      Stream stream = await usersProvider.createWithImage(user, imageFile!);
+      stream.listen((res){
 
-      print('Response: ${response.body}');
+        ResponseApi responseApi = ResponseApi.fromJson(json.decode(res));
+
+        if(responseApi.success == true){
+          clearForm();
+          User user = User.fromJson(responseApi.data);
+          GetStorage().write('user',user.toJson());
+          goToHomePage();
+
+        }else{
+          Get.snackbar('No se puede crear el usuario', responseApi.message!);
+        }
+
+      });
 
     }
+  }
+
+  void goToHomePage() {
+    Get.offNamedUntil('/home', (route) => false);
   }
 
   bool isValidForm(String email, String name, String lastname, String phone , String password, String confirmPassword){
@@ -102,6 +118,12 @@ class RegisterController extends GetxController {
       Get.snackbar('Formulario no válido', 'Las contraseñas no coinciden');
       return false;
     }
+
+    if(imageFile == null){
+      Get.snackbar('Formulario no válido', 'Debes seleccionar una imagen de perfil');
+      return false;
+    }
+
     return true;
 
   }
