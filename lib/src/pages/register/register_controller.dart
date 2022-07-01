@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:sn_progress_dialog/progress_dialog.dart';
 
 class RegisterController extends GetxController {
 
@@ -26,7 +27,7 @@ class RegisterController extends GetxController {
   File? imageFile;
 
 
-  void register() async {
+  void register(BuildContext context) async {
 
     String email = emailController.text.trim();
     String name = nameController.text;
@@ -35,14 +36,10 @@ class RegisterController extends GetxController {
     String password = passwordController.text.trim();
     String confirmPassword = confirmPasswordController.text.trim();
 
-    print('Email: $email');
-    print('name: $name');
-    print('lastname: $lastname');
-    print('phone: $phone');
-    print('password: $password');
-    print('confirmPassword: $confirmPassword');
-
     if(isValidForm(email, name, lastname, phone, password, confirmPassword)){
+
+      ProgressDialog progressDialog = ProgressDialog(context: context);
+      progressDialog.show(max: 100, msg: 'Registrando datos...');
 
       User user = User(
           email: email,
@@ -57,7 +54,7 @@ class RegisterController extends GetxController {
       stream.listen((res){
 
         ResponseApi responseApi = ResponseApi.fromJson(json.decode(res));
-
+        progressDialog.close();
         if(responseApi.success == true){
           clearForm();
           User user = User.fromJson(responseApi.data);
