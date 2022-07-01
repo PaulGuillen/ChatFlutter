@@ -1,55 +1,56 @@
 import 'package:chat_flutter/src/pages/register/register_controller.dart';
-import 'package:chat_flutter/src/utils/my_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../utils/my_colors.dart';
+
 class RegisterPage extends StatelessWidget {
 
-  RegisterController con = RegisterController();
+  RegisterController con = Get.put(RegisterController());
 
   @override
   Widget build(BuildContext context) {
 
     return Scaffold(
-        body: SingleChildScrollView(
-          child: Container(
-            width: double.infinity,
-            child: Stack(
-              children: [
-                Positioned(
-                    top: -80,
-                    left: -80,
-                    child: _circleLogin()
+        body: Container(
+          width: double.infinity,
+          child: Stack(
+            children: [
+              Positioned(
+                  top: -80,
+                  left: -100,
+                  child: _circleLogin()
+              ),
+              Positioned(
+                child: _textRegister(),
+                top: 65,
+                left: 27,
+              ),
+              Positioned(
+                child: _iconBack(),
+                top: 53,
+                left: -5,
+              ),
+              Container(
+                width: double.infinity,
+                margin: EdgeInsets.only(top: 150),
+                child: SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      _imageUser(context),
+                      SizedBox(height: 30),
+                      _textFieldEmail(),
+                      _textFieldName(),
+                      _textFieldLastName(),
+                      _textFieldPhone(),
+                      _textFieldPassword(),
+                      _textFieldConfirmPassword(),
+                      _buttonRegister(),
+                    ],
+                  ),
                 ),
-                Positioned(
-                  child: _textRegister(),
-                  top: 65,
-                  left: 27,
-                ),
-                Positioned(
-                  child: _iconBack(),
-                  top: 53,
-                  left: -5,
-                ),
-                Container(
-                  width: double.infinity,
-                  margin: EdgeInsets.only(top: 150),
-                    child: Column(
-                      children: [
-                        _imageUser(context),
-                        SizedBox(height: 30),
-                        _textFieldEmail(),
-                        _textFieldName(),
-                        _textFieldLastName(),
-                        _textFieldPhone(),
-                        _textFieldPassword(),
-                        _textFieldConfirmPassword(),
-                        _buttonRegister(),
-                      ],
-                    ),
-                )
-              ],
-            ),
+              )
+            ],
           ),
         )
     );
@@ -119,7 +120,6 @@ class RegisterPage extends StatelessWidget {
     );
   }
 
-  //ConfirmPassword
   Widget _textFieldConfirmPassword() {
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 50, vertical: 5),
@@ -262,10 +262,18 @@ class RegisterPage extends StatelessWidget {
   }
 
   Widget _imageUser(BuildContext context) {
-    return CircleAvatar(
-      backgroundImage: AssetImage('assets/img/user_profile_2.png'),
-      radius: 60,
-      backgroundColor: Colors.grey[300],
+
+    return GestureDetector(
+      onTap: () => con.showAlertDialog(context),
+      child: GetBuilder<RegisterController>(
+        builder: (value) => CircleAvatar(
+          backgroundImage: con.imageFile != null
+              ? FileImage(con.imageFile!)
+              : AssetImage('assets/img/user_profile_2.png') as ImageProvider,
+          radius: 60,
+          backgroundColor: Colors.grey[300],
+        ),
+      ),
     );
   }
 
