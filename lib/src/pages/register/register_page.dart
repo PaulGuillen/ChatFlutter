@@ -12,45 +12,45 @@ class RegisterPage extends StatelessWidget {
   Widget build(BuildContext context) {
 
     return Scaffold(
-        body: Container(
-          width: double.infinity,
-          child: Stack(
-            children: [
-              Positioned(
-                  top: -80,
-                  left: -100,
-                  child: _circleLogin()
-              ),
-              Positioned(
-                child: _textRegister(),
-                top: 65,
-                left: 27,
-              ),
-              Positioned(
-                child: _iconBack(),
-                top: 53,
-                left: -5,
-              ),
-              Container(
-                width: double.infinity,
-                margin: EdgeInsets.only(top: 150),
-                child: SingleChildScrollView(
-                  child: Column(
-                    children: [
-                      _imageUser(context),
-                      SizedBox(height: 30),
-                      _textFieldEmail(),
-                      _textFieldName(),
-                      _textFieldLastName(),
-                      _textFieldPhone(),
-                      _textFieldPassword(),
-                      _textFieldConfirmPassword(),
-                      _buttonRegister(),
-                    ],
-                  ),
+        body: SingleChildScrollView(
+          child: Container(
+            width: double.infinity,
+            child: Stack(
+              children: [
+                Positioned(
+                    top: -80,
+                    left: -100,
+                    child: _circleLogin()
                 ),
-              )
-            ],
+                Positioned(
+                  child: _textRegister(),
+                  top: 65,
+                  left: 27,
+                ),
+                Positioned(
+                  child: _iconBack(),
+                  top: 53,
+                  left: -5,
+                ),
+                Container(
+                  width: double.infinity,
+                  margin: EdgeInsets.only(top: 150),
+                    child: Column(
+                      children: [
+                        _imageUser(context),
+                        SizedBox(height: 30),
+                        _textFieldEmail(),
+                        _textFieldName(),
+                        _textFieldLastName(),
+                        _textFieldPhone(),
+                        _textFieldPassword(),
+                        _textFieldConfirmPassword(),
+                        _buttonRegister(),
+                      ],
+                    ),
+                )
+              ],
+            ),
           ),
         )
     );
@@ -252,8 +252,8 @@ class RegisterPage extends StatelessWidget {
 
   Widget _circleLogin() {
     return Container(
-      width: 240,
-      height: 230,
+      width: 260,
+      height: 220,
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(100),
           color: MyColors.primaryColor
@@ -270,7 +270,7 @@ class RegisterPage extends StatelessWidget {
           backgroundImage: con.imageFile != null
               ? FileImage(con.imageFile!)
               : AssetImage('assets/img/user_profile_2.png') as ImageProvider,
-          radius: 60,
+          radius: 90,
           backgroundColor: Colors.grey[300],
         ),
       ),
