@@ -11,10 +11,20 @@ class ProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        onPressed: () => con.signOut(),
-        child: Icon(Icons.power_settings_new),
-        backgroundColor: Colors.green,
+      floatingActionButton: Column(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          FloatingActionButton(
+            onPressed: () => con.signOut(),
+            child: Icon(Icons.edit),
+            backgroundColor: Colors.lightBlueAccent,
+          ),
+          FloatingActionButton(
+            onPressed: () => con.signOut(),
+            child: Icon(Icons.power_settings_new),
+            backgroundColor: Colors.green,
+          ),
+        ],
       ),
       body: SingleChildScrollView(
         child: SafeArea(
@@ -59,14 +69,14 @@ class ProfilePage extends StatelessWidget {
     return Center(
       child: Container(
         margin: EdgeInsets.only(top: 30),
-        width: 200,
+        width: 220,
         child: AspectRatio(
           aspectRatio: 1,
           child: ClipOval(
             child: FadeInImage.assetNetwork(
                 fit: BoxFit.cover,
                 placeholder: 'assets/img/user_profile_2.png',
-                image: con.user.image!
+                image: con.user.image ?? 'https://i.pinimg.com/originals/d2/ea/d8/d2ead876ae76ba7147f68e7d2417c5f3.png'
             ),
           ),
         ),
