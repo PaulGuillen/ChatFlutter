@@ -262,7 +262,6 @@ class RegisterPage extends StatelessWidget {
   }
 
   Widget _imageUser(BuildContext context) {
-
     return GestureDetector(
       onTap: () => con.showAlertDialog(context),
       child: GetBuilder<RegisterController>(
