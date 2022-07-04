@@ -1,7 +1,10 @@
+import 'package:chat_flutter/src/pages/profile_edit/profile_edit_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class ProfileEditPage  extends StatelessWidget {
-  const ProfileEditPage({Key? key}) : super(key: key);
+
+  ProfileEditController con = Get.put(ProfileEditController());
 
   @override
   Widget build(BuildContext context) {
