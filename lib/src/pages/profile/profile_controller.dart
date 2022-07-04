@@ -11,4 +11,7 @@ class ProfileController extends GetxController {
     Get.offNamedUntil('/', (route) => false);
   }
 
+  void goToProfileEdit(){
+    Get.toNamed('/profile/edit');
+  }
 }

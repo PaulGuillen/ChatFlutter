@@ -15,10 +15,11 @@ class ProfilePage extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
           FloatingActionButton(
-            onPressed: () => con.signOut(),
+            onPressed: () => con.goToProfileEdit(),
             child: Icon(Icons.edit),
             backgroundColor: Colors.lightBlueAccent,
           ),
+          SizedBox(height: 10),
           FloatingActionButton(
             onPressed: () => con.signOut(),
             child: Icon(Icons.power_settings_new),
