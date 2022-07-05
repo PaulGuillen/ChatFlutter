@@ -47,7 +47,6 @@ class ProfileEditController extends GetxController {
         phone: phone,
         email: user.email,
         sessionToken: user.sessionToken,
-        image: user.image
     );
 
     ProgressDialog progressDialog = ProgressDialog(context: context);

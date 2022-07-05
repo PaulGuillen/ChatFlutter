@@ -135,7 +135,7 @@ class ProfileEditPage  extends StatelessWidget {
       width: double.infinity,
       margin: EdgeInsets.symmetric(horizontal: 50, vertical: 30),
       child: ElevatedButton(
-        onPressed: () => {},
+        onPressed: () => con.updateUser(context),
         child: Text('EDITAR PERFIL'),
         style: ElevatedButton.styleFrom(
             primary: MyColors.primaryColor,
