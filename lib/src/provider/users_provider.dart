@@ -36,6 +36,21 @@ class UsersProvider extends GetConnect {
     return response.stream.transform(utf8.decoder);
   }
 
+  Future<Stream> updateWithImage(User user, File image) async {
+    Uri url = Uri.http(Environment.API_CHAT_OLD, '/api/users/updateWithImage');
+    final request = http.MultipartRequest('PUT', url);
+    request.headers['Authorization'] = user.sessionToken!;
+    request.files.add(http.MultipartFile(
+        'image',
+        http.ByteStream(image.openRead().cast()),
+        await image.length(),
+        filename: basename(image.path)
+    ));
+    request.fields['user'] = json.encode(user);
+    final response = await request.send();
+    return response.stream.transform(utf8.decoder);
+  }
+
   Future <ResponseApi> createUserWithImage(User user, File image) async {
     FormData form = FormData({
       'image': MultipartFile(image, filename: basename(image.path)),
