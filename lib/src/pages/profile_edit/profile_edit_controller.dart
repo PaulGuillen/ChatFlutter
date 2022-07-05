@@ -35,7 +35,6 @@ class ProfileEditController extends GetxController {
 
 
   void updateUser(BuildContext context) async {
-
     String name = nameController.text;
     String lastname = lastnameController.text;
     String phone = phoneController.text.trim();
@@ -47,29 +46,48 @@ class ProfileEditController extends GetxController {
         phone: phone,
         email: user.email,
         sessionToken: user.sessionToken,
+        image: user.image
     );
 
     ProgressDialog progressDialog = ProgressDialog(context: context);
     progressDialog.show(max: 100, msg: 'Actualizando datos...');
 
-    Stream stream = await usersProvider.updateWithImage(u, imageFile!);
-    stream.listen((res) {
-
-      ResponseApi responseApi = ResponseApi.fromJson(json.decode(res));
+    if (imageFile == null) {
+      ResponseApi responseApi = await usersProvider.update(u);
       progressDialog.close();
 
       print('Usuario actualizado ${responseApi.data}');
 
       if (responseApi.success == true) {
-
-        GetStorage().write('user', responseApi.toJson());
+        User userResponse = User.fromJson(responseApi.data);
+        GetStorage().write('user', userResponse.toJson());
         Get.snackbar('Usuario Actualizado', responseApi.message!);
       }
       else {
         Get.snackbar('No se pudo actualizar el usuario', responseApi.message!);
       }
-    });
+    } else {
+      Stream stream = await usersProvider.updateWithImage(u, imageFile!);
+      stream.listen((res) {
+        ResponseApi responseApi = ResponseApi.fromJson(json.decode(res));
+        progressDialog.close();
 
+        print('Usuario actualizado ${responseApi.data}');
+
+        if (responseApi.success == true) {
+          User userResponse = User.fromJson(responseApi.data);
+          GetStorage().write('user', userResponse.toJson());
+          Get.snackbar('Usuario Actualizado', responseApi.message!);
+        }
+        else {
+          Get.snackbar(
+              'No se pudo actualizar el usuario', responseApi.message!);
+        }
+      });
+    }
+  }
+
+  void saveUserSesion(){
 
   }
 

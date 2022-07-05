@@ -51,6 +51,25 @@ class UsersProvider extends GetConnect {
     return response.stream.transform(utf8.decoder);
   }
 
+  Future<ResponseApi> update(User user) async {
+    Response response = await put(
+        '$url/update',
+        user.toJson(),
+        headers: {
+          'Content-Type': 'application/json'
+   /*       'Authorization': user.sessionToken!*/
+        }
+    ); // ESTA LINEA
+
+    if (response.body == null) {
+      Get.snackbar('Error en la peticion', 'No se pudo actualizar el usuario');
+      return ResponseApi();
+    }
+
+    ResponseApi responseApi = ResponseApi.fromJson(response.body);
+    return responseApi;
+  }
+
   Future <ResponseApi> createUserWithImage(User user, File image) async {
     FormData form = FormData({
       'image': MultipartFile(image, filename: basename(image.path)),
