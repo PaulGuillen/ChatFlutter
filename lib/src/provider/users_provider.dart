@@ -6,10 +6,47 @@ import 'package:chat_flutter/src/models/response_api.dart';
 import 'package:chat_flutter/src/models/users.dart';
 import 'package:get/get.dart';
 import 'package:path/path.dart';
+import 'package:get_storage/get_storage.dart';
 
 class UsersProvider extends GetConnect {
 
+
   String url = Environment.API_CHAT + 'api/users';
+
+  User user = User.fromJson(GetStorage().read('user') ?? {});
+
+
+  Future<List<User>> getUsers() async {
+    Response response = await get(
+        '$url/getAll/${user.id}',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': user.sessionToken!
+        }
+    );
+
+    if (response.statusCode == 401) {
+      Get.snackbar('Peticion denegada', 'tu usuario no tiene permitido obtener esta informacion');
+      return [];
+    }
+
+    List<User> users = User.fromJsonList(response.body);
+
+    return users;
+  }
+
+  Future<Response> checkIfIsOnline(String idUser) async {
+    Response response = await get(
+        '$url/checkIfIsOnline/$idUser',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': user.sessionToken!
+        }
+    );
+
+    return response;
+  }
+
 
   Future<Response> create(User user) async {
     Response response = await post(
@@ -56,8 +93,8 @@ class UsersProvider extends GetConnect {
         '$url/update',
         user.toJson(),
         headers: {
-          'Content-Type': 'application/json'
-   /*       'Authorization': user.sessionToken!*/
+          'Content-Type': 'application/json',
+          'Authorization': user.sessionToken!
         }
     ); // ESTA LINEA
 

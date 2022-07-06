@@ -27,28 +27,30 @@ class ProfilePage extends StatelessWidget {
           ),
         ],
       ),
-      body: SingleChildScrollView(
-        child: SafeArea(
-          child: Column(
-            children: [
-              circleImageUser(),
-              SizedBox(height: 20),
-              userInfo(
-                  'Nombre del usuario',
-                  '${con.user.name ?? ''} ${con.user.lastname ?? ''}',
-                  Icons.person
-              ),
-              userInfo(
-                  'Email',
-                  con.user.email ?? '',
-                  Icons.email
-              ),
-              userInfo(
-                  'Telefono',
-                  con.user.phone ?? '',
-                  Icons.phone
-              ),
-            ],
+      body: Obx( () =>
+         SingleChildScrollView(
+          child: SafeArea(
+            child: Column(
+              children: [
+                circleImageUser(),
+                SizedBox(height: 20),
+                userInfo(
+                    'Nombre del usuario',
+                    '${con.user.value.name ?? ''} ${con.user.value.lastname ?? ''}',
+                    Icons.person
+                ),
+                userInfo(
+                    'Email',
+                    con.user.value.email ?? '',
+                    Icons.email
+                ),
+                userInfo(
+                    'Telefono',
+                    con.user.value.phone ?? '',
+                    Icons.phone
+                ),
+              ],
+            ),
           ),
         ),
       ),
@@ -77,7 +79,7 @@ class ProfilePage extends StatelessWidget {
             child: FadeInImage.assetNetwork(
                 fit: BoxFit.cover,
                 placeholder: 'assets/img/user_profile_2.png',
-                image: con.user.image ?? 'https://i.pinimg.com/originals/d2/ea/d8/d2ead876ae76ba7147f68e7d2417c5f3.png'
+                image: con.user.value.image ?? 'https://i.pinimg.com/originals/d2/ea/d8/d2ead876ae76ba7147f68e7d2417c5f3.png'
             ),
           ),
         ),

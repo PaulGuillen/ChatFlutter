@@ -1,7 +1,10 @@
+import 'package:chat_flutter/src/pages/users/users_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class UsersPage extends StatelessWidget {
-  const UsersPage({Key? key}) : super(key: key);
+
+  UsersController con = Get.put(UsersController());
 
   @override
   Widget build(BuildContext context){

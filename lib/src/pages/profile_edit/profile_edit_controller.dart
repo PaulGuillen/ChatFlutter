@@ -61,6 +61,7 @@ class ProfileEditController extends GetxController {
       if (responseApi.success == true) {
         User userResponse = User.fromJson(responseApi.data);
         GetStorage().write('user', userResponse.toJson());
+        profileController.user.value = userResponse;
         Get.snackbar('Usuario Actualizado', responseApi.message!);
       }
       else {
@@ -77,6 +78,7 @@ class ProfileEditController extends GetxController {
         if (responseApi.success == true) {
           User userResponse = User.fromJson(responseApi.data);
           GetStorage().write('user', userResponse.toJson());
+          profileController.user.value = userResponse;
           Get.snackbar('Usuario Actualizado', responseApi.message!);
         }
         else {
