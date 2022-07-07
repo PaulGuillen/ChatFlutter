@@ -15,7 +15,6 @@ class MessagesPage extends StatelessWidget {
       body: Column(
             children: [
               customAppBar(),
-              messagesBox(context),
               Expanded(
                   flex: 1,
                   child: Container(
@@ -26,6 +25,7 @@ class MessagesPage extends StatelessWidget {
                     ),
                   )
               ),
+              messagesBox(context),
             ],
           ),
     );
