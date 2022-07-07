@@ -36,11 +36,8 @@ class MessagesController extends GetxController {
 
     ResponseApi responseApi = await chatsProvider.create(chat);
 
-    Get.snackbar('Chat creado', responseApi.message ?? 'Error en la respuesta');
-
+/*    Get.snackbar('Chat creado', responseApi.message ?? 'Error en la respuesta');*/
 
   }
-
-
 
 }
