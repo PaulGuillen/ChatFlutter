@@ -5,6 +5,7 @@ import 'package:chat_flutter/src/models/chat.dart';
 import 'package:chat_flutter/src/models/message.dart';
 import 'package:chat_flutter/src/models/response_api.dart';
 import 'package:chat_flutter/src/models/users.dart';
+import 'package:chat_flutter/src/pages/home/home_controller.dart';
 import 'package:chat_flutter/src/provider/chats_provider.dart';
 import 'package:chat_flutter/src/provider/messages_provider.dart';
 import 'package:flutter/material.dart';
@@ -27,11 +28,21 @@ class MessagesController extends GetxController {
   String idChat = '';
   List<Message> messages = <Message>[].obs; // GETX
 
+  HomeController homeController = Get.find();
+
   MessagesController() {
     print('Usuario chat: ${userChat.toJson()}');
     createChat();
 
   }
+
+  void listenMessage() {
+    homeController.socket.on('message/$idChat', (data) {
+      print('DATA EMITIDA $data');
+      getMessages();
+    });
+  }
+
 
   void getMessages() async {
     var result = await messagesProvider.getMessagesByChat(idChat);
@@ -50,7 +61,7 @@ class MessagesController extends GetxController {
     if (responseApi.success == true) {
       idChat = responseApi.data as String;
         getMessages();
-      // listenMessage();
+        listenMessage();
       // listenWriting();
       // listenMessageSeen();
       // listenOffline();
@@ -58,6 +69,14 @@ class MessagesController extends GetxController {
     }
     // Get.snackbar('Chat creado', responseApi.message ?? 'Error en la respuesta');
   }
+
+  void emitMessage() {
+    homeController.socket.emit('message', {
+      'id_chat': idChat
+ /*     'id_user': userChat.id*/
+    });
+  }
+
 
   void sendMessage() async {
     String messageText = messageController.text;
@@ -85,7 +104,7 @@ class MessagesController extends GetxController {
 
     if (responseApi.success == true) {
       messageController.text = '';
-    /*  emitMessage();*/
+      emitMessage();
 /*      sendNotification(messageText, responseApi.data as String);*/
     }
 
