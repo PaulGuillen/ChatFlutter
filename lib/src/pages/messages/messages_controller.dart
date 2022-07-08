@@ -25,10 +25,18 @@ class MessagesController extends GetxController {
   MessagesProvider messagesProvider = MessagesProvider();
 
   String idChat = '';
+  List<Message> messages = <Message>[].obs; // GETX
 
   MessagesController() {
     print('Usuario chat: ${userChat.toJson()}');
     createChat();
+
+  }
+
+  void getMessages() async {
+    var result = await messagesProvider.getMessagesByChat(idChat);
+    messages.clear();
+    messages.addAll(result);
 
   }
 
@@ -41,7 +49,7 @@ class MessagesController extends GetxController {
     ResponseApi responseApi = await chatsProvider.create(chat);
     if (responseApi.success == true) {
       idChat = responseApi.data as String;
-      // getMessages();
+        getMessages();
       // listenMessage();
       // listenWriting();
       // listenMessageSeen();
