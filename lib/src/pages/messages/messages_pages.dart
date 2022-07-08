@@ -67,7 +67,7 @@ class MessagesPage extends StatelessWidget {
           Expanded(
               flex: 1,
               child: IconButton(
-                onPressed: () {},
+                onPressed: () => con.showAlertDialog(context),
                 icon: Icon(Icons.image_outlined),
               )),
           Expanded(

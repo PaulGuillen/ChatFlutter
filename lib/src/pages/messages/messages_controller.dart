@@ -22,6 +22,9 @@ class MessagesController extends GetxController {
   User userChat = User.fromJson(Get.arguments['user']);
   User myUser = User.fromJson(GetStorage().read('user') ?? {});
 
+  ImagePicker picker = ImagePicker();
+  File? imageFile;
+
   ChatsProvider chatsProvider = ChatsProvider();
   MessagesProvider messagesProvider = MessagesProvider();
 
@@ -108,6 +111,70 @@ class MessagesController extends GetxController {
 /*      sendNotification(messageText, responseApi.data as String);*/
     }
 
+  }
+
+  Future selectImage(ImageSource imageSource, BuildContext context) async {
+    final XFile? image = await picker.pickImage(source: imageSource);
+
+    if(image != null){
+      imageFile = File(image.path);
+
+      ProgressDialog progressDialog = ProgressDialog(context: context);
+      progressDialog.show(max: 100, msg: 'Subiendo imagen...');
+
+      Message message = Message(
+          message: 'IMAGEN',
+          idSender: myUser.id,
+          idReceiver: userChat.id,
+          idChat: idChat,
+          isImage: true,
+          isVideo: false
+      );
+
+      Stream stream = await messagesProvider.createWithImage(message, imageFile!);
+      stream.listen((res) {
+        progressDialog.close();
+        ResponseApi responseApi = ResponseApi.fromJson(json.decode(res));
+
+        if (responseApi.success == true) {
+          Get.snackbar('Mensaje enviado', 'Se creado un mensaje con imagen');
+          emitMessage();
+        }
+
+      });
+
+    }
+  }
+
+
+  void showAlertDialog(BuildContext context) {
+    Widget galleryButton = ElevatedButton(
+        onPressed: () {
+          Get.back();
+          selectImage(ImageSource.gallery, context);
+        },
+        child: Text('GALERIA')
+    );
+
+    Widget cameraButton = ElevatedButton(
+        onPressed: () {
+          Get.back();
+          selectImage(ImageSource.camera, context);
+        },
+        child: Text('CAMARA')
+    );
+
+    AlertDialog alertDialog = AlertDialog(
+      title: Text('Selecciona tu imagen'),
+      actions: [
+        galleryButton,
+        cameraButton
+      ],
+    );
+
+    showDialog(context: context, builder: (BuildContext context) {
+      return alertDialog;
+    });
   }
 
 }
