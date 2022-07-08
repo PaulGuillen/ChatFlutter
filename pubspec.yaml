@@ -52,7 +52,7 @@ dev_dependencies:
   sn_progress_dialog: ^1.0.8
   intl: ^0.17.0
   socket_io_client: ^1.0.2
-
+  flutter_image_compress: ^1.1.0
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 

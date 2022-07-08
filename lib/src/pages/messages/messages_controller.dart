@@ -14,6 +14,7 @@ import 'package:get_storage/get_storage.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:sn_progress_dialog/progress_dialog.dart';
 import 'package:path_provider/path_provider.dart' as path_provider;
+import 'package:flutter_image_compress/flutter_image_compress.dart';
 
 class MessagesController extends GetxController {
 
@@ -113,14 +114,30 @@ class MessagesController extends GetxController {
 
   }
 
+
+  Future<File?> compressAndGetFile(File file, String targetPath) async {
+    var result = await FlutterImageCompress.compressAndGetFile(
+        file.absolute.path,
+        targetPath,
+        quality: 80
+    );
+
+    return result;
+  }
+
   Future selectImage(ImageSource imageSource, BuildContext context) async {
     final XFile? image = await picker.pickImage(source: imageSource);
 
     if(image != null){
       imageFile = File(image.path);
 
+      final dir = await path_provider.getTemporaryDirectory();
+      final targetPath = dir.absolute.path + "/temp.jpg";
+
       ProgressDialog progressDialog = ProgressDialog(context: context);
       progressDialog.show(max: 100, msg: 'Subiendo imagen...');
+
+      File? compressFile = await compressAndGetFile(imageFile!, targetPath); // COMPRIMIR EL ARCHIVO
 
       Message message = Message(
           message: 'IMAGEN',
@@ -131,7 +148,7 @@ class MessagesController extends GetxController {
           isVideo: false
       );
 
-      Stream stream = await messagesProvider.createWithImage(message, imageFile!);
+      Stream stream = await messagesProvider.createWithImage(message, compressFile!);
       stream.listen((res) {
         progressDialog.close();
         ResponseApi responseApi = ResponseApi.fromJson(json.decode(res));
