@@ -66,7 +66,7 @@ class MessagesPage extends StatelessWidget {
           Expanded(
               flex: 2,
               child: IconButton(
-                onPressed: () {},
+                onPressed: () => con.sendMessage(),
                 icon: Icon(Icons.send),
               )
           )
