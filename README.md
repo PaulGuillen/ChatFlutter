@@ -1,5 +1,3 @@
-# chat_flutter
-
-En progreso...
+#Flutter Chat
 
 
