@@ -9,5 +9,5 @@ _Este proyecto tiene varios endpoints de consulta, esta realizado en el lenguaje
 
 ### Pre-requisitos 📋
 
-_En progreso.._
+_En progreso..._
 
