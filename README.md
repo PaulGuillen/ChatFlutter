@@ -1,4 +1,4 @@
 ## Flutter Chat
 
-_El objetivo de este proyecto es realizar un chat, entre ios , android y windows, el cual Flutter nos oferece este apoyo._
+_Proyecto realizado en el lenguaje de programación dart en el IDE Flutter, como dice el nombre del proyecto es un chat, en el cual cuenta con 3 opciones de vistas_
 
