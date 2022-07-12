@@ -48,6 +48,20 @@ class MessagesPage extends StatelessWidget {
   }
 
   Widget bubbleMessage(Message message) {
+
+    if (message.isImage == true) {
+      return BubbleImage(
+        message: message.message ?? '',
+        time: RelativeTimeUtil.getRelativeTime(message.timestamp ?? 0),
+        delivered: true,
+        isMe: message.idSender == con.myUser.id ? true: false,
+        status: message.status ?? 'ENVIADO',
+        isImage: true,
+        url: message.url ?? 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png',
+      );
+    }
+
+
     return Bubble(
       message: message.message ?? '',
       delivered: true,

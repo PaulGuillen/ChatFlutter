@@ -154,7 +154,6 @@ class MessagesController extends GetxController {
         ResponseApi responseApi = ResponseApi.fromJson(json.decode(res));
 
         if (responseApi.success == true) {
-          Get.snackbar('Mensaje enviado', 'Se creado un mensaje con imagen');
           emitMessage();
         }
 
