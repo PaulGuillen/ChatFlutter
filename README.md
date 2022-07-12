@@ -5,7 +5,7 @@ _Proyecto realizado en el lenguaje de programación dart en el IDE Flutter, como
 
 ## Comenzando 🚀
 
-_Este proyecto tiene varios endpoints de consulta, esta realizado en el lenguaje de programación nodejs, el backend esta en otro repositorio , si necesitan que les de ac._
+__
 
 ### Pre-requisitos 📋
 
