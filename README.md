@@ -5,7 +5,7 @@ _Proyecto realizado en el lenguaje de programación dart en el IDE Flutter, como
 
 ## Comenzando 🚀
 
-__
+_En progreso..._
 
 ### Pre-requisitos 📋
 
