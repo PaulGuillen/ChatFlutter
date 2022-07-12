@@ -24,7 +24,7 @@ class MessagesPage extends StatelessWidget {
                   margin: EdgeInsets.only(bottom: 10),
                   child: ListView(
                     reverse: true,
-                    /*       controller: con.scrollController,*/
+                      controller: con.scrollController,
                     children: getMessages(),
                   ),
                 )),

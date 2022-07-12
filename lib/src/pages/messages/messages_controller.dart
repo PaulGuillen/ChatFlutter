@@ -29,6 +29,9 @@ class MessagesController extends GetxController {
   ChatsProvider chatsProvider = ChatsProvider();
   MessagesProvider messagesProvider = MessagesProvider();
 
+
+  ScrollController scrollController =  ScrollController();
+
   String idChat = '';
   List<Message> messages = <Message>[].obs; // GETX
 
@@ -53,7 +56,11 @@ class MessagesController extends GetxController {
     messages.clear();
     messages.addAll(result);
 
+    Future.delayed(Duration(milliseconds: 100), () {
+      scrollController.jumpTo(scrollController.position.minScrollExtent);
+    });
   }
+
 
   void createChat() async {
     Chat chat = Chat(
