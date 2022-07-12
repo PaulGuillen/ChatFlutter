@@ -87,7 +87,7 @@ class MessagesPage extends StatelessWidget {
           Expanded(
               flex: 1,
               child: IconButton(
-                onPressed: () {},
+                onPressed: ()  => con.showAlertDialogForVideo(context),
                 icon: Icon(Icons.video_call_rounded),
               )),
           Expanded(

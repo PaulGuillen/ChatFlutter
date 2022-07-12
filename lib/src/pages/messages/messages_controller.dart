@@ -132,6 +132,37 @@ class MessagesController extends GetxController {
     return result;
   }
 
+  Future selectVideo(ImageSource imageSource, BuildContext context) async {
+    final XFile? video = await picker.pickVideo(source: imageSource);
+
+    if (video != null) {
+      File videoFile = File(video.path);
+
+      ProgressDialog progressDialog = ProgressDialog(context: context);
+      progressDialog.show(max: 100, msg: 'Subiendo video...');
+
+      Message message = Message(
+          message: 'VIDEO',
+          idSender: myUser.id,
+          idReceiver: userChat.id,
+          idChat: idChat,
+          isImage: false,
+          isVideo: true
+      );
+
+      Stream stream = await messagesProvider.createWithVideo(message, videoFile);
+      stream.listen((res) {
+        progressDialog.close();
+        ResponseApi responseApi = ResponseApi.fromJson(json.decode(res));
+
+        if (responseApi.success == true) {
+          emitMessage();
+        }
+
+      });
+    }
+  }
+
   Future selectImage(ImageSource imageSource, BuildContext context) async {
     final XFile? image = await picker.pickImage(source: imageSource);
 
@@ -189,6 +220,36 @@ class MessagesController extends GetxController {
 
     AlertDialog alertDialog = AlertDialog(
       title: Text('Selecciona tu imagen'),
+      actions: [
+        galleryButton,
+        cameraButton
+      ],
+    );
+
+    showDialog(context: context, builder: (BuildContext context) {
+      return alertDialog;
+    });
+  }
+
+  void showAlertDialogForVideo(BuildContext context) {
+    Widget galleryButton = ElevatedButton(
+        onPressed: () {
+          Get.back();
+          selectVideo(ImageSource.gallery, context);
+        },
+        child: Text('GALERIA')
+    );
+
+    Widget cameraButton = ElevatedButton(
+        onPressed: () {
+          Get.back();
+          selectVideo(ImageSource.camera, context);
+        },
+        child: Text('CAMARA')
+    );
+
+    AlertDialog alertDialog = AlertDialog(
+      title: Text('Selecciona el video'),
       actions: [
         galleryButton,
         cameraButton

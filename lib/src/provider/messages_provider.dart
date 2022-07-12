@@ -72,4 +72,19 @@ class MessagesProvider  extends GetConnect {
     return response.stream.transform(utf8.decoder);
   }
 
+  Future<Stream> createWithVideo(Message message, File video) async {
+    Uri url = Uri.http(Environment.API_CHAT_OLD, '/api/messages/createWithVideo');
+    final request = http.MultipartRequest('POST', url);
+    request.headers['Authorization'] = user.sessionToken!;
+    request.files.add(http.MultipartFile(
+        'video',
+        http.ByteStream(video.openRead().cast()),
+        await video.length(),
+        filename: basename(video.path)
+    ));
+    request.fields['message'] = json.encode(message);
+    final response = await request.send();
+    return response.stream.transform(utf8.decoder);
+  }
+
 }
