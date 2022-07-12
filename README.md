@@ -11,3 +11,10 @@ _Este proyecto tiene varios endpoints de consulta, esta realizado en el lenguaje
 
 _En progreso...._
 
+## Contribuyendo 🖇️
+
+_Agradecer a las personas que participaron en este proyecto, ya que fueron parte esenciales para el maquetado de esta aplicación móvil_
+
+## Autor ✒️
+
+_**Paul Guillen Acuña** - *Mi Repositorio* -[PaulGuillen](https://github.com/PaulGuillen?tab=repositories)_
