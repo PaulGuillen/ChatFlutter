@@ -87,4 +87,25 @@ class MessagesProvider  extends GetConnect {
     return response.stream.transform(utf8.decoder);
   }
 
+  Future<ResponseApi> updateToSeen(String idMessage) async {
+    Response response = await put(
+        '$url/updateToSeen',
+        {
+          'id': idMessage
+        },
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': user.sessionToken!
+        }
+    ); // ESTA LINEA
+
+    if (response.body == null) {
+      Get.snackbar('Error en la peticion', 'No se pudo actualizar el usuario');
+      return ResponseApi();
+    }
+
+    ResponseApi responseApi = ResponseApi.fromJson(response.body);
+    return responseApi;
+  }
+
 }

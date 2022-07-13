@@ -49,6 +49,13 @@ class MessagesController extends GetxController {
     messages.clear();
     messages.addAll(result);
 
+    messages.forEach((m) async {
+      if (m.status != 'VISTO' && m.idReceiver == myUser.id) {
+        await messagesProvider.updateToSeen(m.id!);
+        emitMessageSeen();
+      }
+    });
+
     Future.delayed(Duration(milliseconds: 100), () {
       scrollController.jumpTo(scrollController.position.minScrollExtent);
     });
@@ -67,7 +74,7 @@ class MessagesController extends GetxController {
         getMessages();
         listenMessage();
         listenWriting();
-      // listenMessageSeen();
+       listenMessageSeen();
       // listenOffline();
       // listenMessageReceived();
     }
@@ -76,6 +83,14 @@ class MessagesController extends GetxController {
 
   void listenMessage() {
     homeController.socket.on('message/$idChat', (data) {
+      print('DATA EMITIDA $data');
+      getMessages();
+    });
+  }
+
+
+  void listenMessageSeen() {
+    homeController.socket.on('seen/$idChat', (data) {
       print('DATA EMITIDA $data');
       getMessages();
     });
@@ -97,6 +112,13 @@ class MessagesController extends GetxController {
  /*     'id_user': userChat.id*/
     });
   }
+
+  void emitMessageSeen() {
+    homeController.socket.emit('seen', {
+      'id_chat': idChat
+    });
+  }
+
   void emitWriting() {
     homeController.socket.emit('writing', {
       'id_chat': idChat,
@@ -274,6 +296,17 @@ class MessagesController extends GetxController {
     showDialog(context: context, builder: (BuildContext context) {
       return alertDialog;
     });
+  }
+
+  @override
+  void onClose() {
+    // TODO: implement onClose
+    super.onClose();
+    scrollController.dispose();
+    homeController.socket.off('message/$idChat');
+    homeController.socket.off('seen/$idChat');
+    homeController.socket.off('writing/$idChat/${userChat.id}');
+
   }
 
 }

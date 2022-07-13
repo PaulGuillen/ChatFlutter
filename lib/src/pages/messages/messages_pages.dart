@@ -39,7 +39,7 @@ class MessagesPage extends StatelessWidget {
   List<Widget> getMessages() {
     return con.messages.map((message) {
       return Container(
-        margin: EdgeInsets.symmetric(horizontal: 20),
+        margin: EdgeInsets.symmetric(horizontal: 30),
         alignment: message.idSender == con.myUser.id
             ? Alignment.centerRight
             : Alignment.centerLeft,
