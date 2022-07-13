@@ -107,6 +107,9 @@ class MessagesPage extends StatelessWidget {
           Expanded(
               flex: 10,
               child: TextField(
+                onChanged: (String text) {
+                  con.emitWriting();
+                },
                 controller: con.messageController,
                 keyboardType: TextInputType.text,
                 decoration: InputDecoration(
@@ -136,7 +139,12 @@ class MessagesPage extends StatelessWidget {
               color: Colors.grey[700],
               fontWeight: FontWeight.bold),
         ),
-        subtitle: Text(
+        subtitle: con.isWriting.value == true
+            ? Text(
+          'Escribiendo....',
+          style: TextStyle(color: Colors.green),
+        ):
+        Text(
           'Desconectado',
           style: TextStyle(color: Colors.grey),
         ),

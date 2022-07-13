@@ -29,27 +29,20 @@ class MessagesController extends GetxController {
   ChatsProvider chatsProvider = ChatsProvider();
   MessagesProvider messagesProvider = MessagesProvider();
 
-
-  ScrollController scrollController =  ScrollController();
-
   String idChat = '';
   List<Message> messages = <Message>[].obs; // GETX
 
+  ScrollController scrollController =  ScrollController();
+
   HomeController homeController = Get.find();
+
+  var isWriting = false.obs;
 
   MessagesController() {
     print('Usuario chat: ${userChat.toJson()}');
     createChat();
 
   }
-
-  void listenMessage() {
-    homeController.socket.on('message/$idChat', (data) {
-      print('DATA EMITIDA $data');
-      getMessages();
-    });
-  }
-
 
   void getMessages() async {
     var result = await messagesProvider.getMessagesByChat(idChat);
@@ -73,12 +66,29 @@ class MessagesController extends GetxController {
       idChat = responseApi.data as String;
         getMessages();
         listenMessage();
-      // listenWriting();
+        listenWriting();
       // listenMessageSeen();
       // listenOffline();
       // listenMessageReceived();
     }
     // Get.snackbar('Chat creado', responseApi.message ?? 'Error en la respuesta');
+  }
+
+  void listenMessage() {
+    homeController.socket.on('message/$idChat', (data) {
+      print('DATA EMITIDA $data');
+      getMessages();
+    });
+  }
+
+  void listenWriting() {
+    homeController.socket.on('writing/$idChat/${userChat.id}', (data) {
+      print('DATA EMITIDA $data');
+      isWriting.value = true;
+      Future.delayed(Duration(milliseconds: 2000), () {
+        isWriting.value = false;
+      });
+    });
   }
 
   void emitMessage() {
@@ -87,7 +97,12 @@ class MessagesController extends GetxController {
  /*     'id_user': userChat.id*/
     });
   }
-
+  void emitWriting() {
+    homeController.socket.emit('writing', {
+      'id_chat': idChat,
+      'id_user': myUser.id,
+    });
+  }
 
   void sendMessage() async {
     String messageText = messageController.text;
