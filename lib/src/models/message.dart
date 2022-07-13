@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:video_player/video_player.dart';
 
 Message messageFromJson(String str) => Message.fromJson(json.decode(str));
 
@@ -17,7 +18,7 @@ class Message {
   bool? isImage;
   bool? isVideo;
   int? timestamp;
-
+  VideoPlayerController? controller;
 
   Message({
     this.id,
@@ -30,6 +31,7 @@ class Message {
     this.isImage,
     this.isVideo,
     this.timestamp,
+    this.controller
   });
 
   factory Message.fromJson(Map<String, dynamic> json) => Message(

@@ -3,6 +3,7 @@ import 'package:chat_flutter/src/models/message.dart';
 import 'package:chat_flutter/src/pages/messages/messages_controller.dart';
 import 'package:chat_flutter/src/utils/bubble.dart';
 import 'package:chat_flutter/src/utils/bubble_image.dart';
+import 'package:chat_flutter/src/utils/bubble_video.dart';
 import 'package:chat_flutter/src/utils/relative_time_util.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -60,6 +61,19 @@ class MessagesPage extends StatelessWidget {
         url: message.url ?? 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png',
       );
     }
+
+    if (message.isVideo == true) {
+      return BubbleVideo(
+        message: message.message ?? '',
+        time: RelativeTimeUtil.getRelativeTime(message.timestamp ?? 0),
+        delivered: true,
+        isMe: message.idSender == con.myUser.id ? true: false,
+        status: message.status ?? 'ENVIADO',
+        url: message.url ?? 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png',
+        videoController: message.controller,
+      );
+    }
+
 
 
     return Bubble(
