@@ -12,6 +12,25 @@ class ChatsProvider extends GetConnect {
 
   User user = User.fromJson(GetStorage().read('user') ?? {});
 
+  Future<List<Chat>> getChats() async {
+    Response response = await get(
+        '$url/findByIdUser/${user.id}',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': user.sessionToken!
+        }
+    );
+
+    if (response.statusCode == 401) {
+      Get.snackbar('Peticion denegada', 'tu usuario no tiene permitido obtener esta informacion');
+      return [];
+    }
+
+    List<Chat> chats = Chat.fromJsonList(response.body);
+
+    return chats;
+  }
+
   Future<ResponseApi> create(Chat chat) async {
     Response response = await post(
         '$url/create',
