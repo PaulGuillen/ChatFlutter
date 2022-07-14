@@ -31,7 +31,7 @@ class ChatsPage extends StatelessWidget {
   List<Widget> getChats() {
     return con.chats.map((chat) {
       return Container(
-        margin: EdgeInsets.symmetric(horizontal: 20),
+        margin: EdgeInsets.symmetric(horizontal: 5),
         child: cardChat(chat),
       );
     }).toList();
