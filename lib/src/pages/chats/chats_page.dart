@@ -49,7 +49,7 @@ class ChatsPage extends StatelessWidget {
       trailing:  Column(
         children: [
           Container(
-            margin: EdgeInsets.only(top: 7),
+            margin: EdgeInsets.only(top: 12),
             child: Text(
               RelativeTimeUtil.getRelativeTime(chat.lastMessageTimestamp ?? 0),
               style: TextStyle(
@@ -78,7 +78,7 @@ class ChatsPage extends StatelessWidget {
 
   Widget circleMessageUnread(int number) {
     return Container(
-      margin: EdgeInsets.only(top: 5, left: 10, right: 10),
+      margin: EdgeInsets.only(top: 5, left: 10, right: 5),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(100),
         child: Container(
@@ -90,7 +90,7 @@ class ChatsPage extends StatelessWidget {
             number.toString(),
             style: TextStyle(
                 color: Colors.white,
-                fontSize: 10
+                fontSize: 12
             ),
             textAlign: TextAlign.center,
           ),
