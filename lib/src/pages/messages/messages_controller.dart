@@ -108,8 +108,8 @@ class MessagesController extends GetxController {
 
   void emitMessage() {
     homeController.socket.emit('message', {
-      'id_chat': idChat
- /*     'id_user': userChat.id*/
+      'id_chat': idChat,
+     'id_user': userChat.id
     });
   }
 
