@@ -48,16 +48,6 @@ class ChatsPage extends StatelessWidget {
       subtitle: Text(chat.lastMessage ?? ''),
       trailing:  Column(
         children: [
-          Container(
-            margin: EdgeInsets.only(top: 12),
-            child: Text(
-              RelativeTimeUtil.getRelativeTime(chat.lastMessageTimestamp ?? 0),
-              style: TextStyle(
-                  fontSize: 12,
-                  color: Colors.grey[500]
-              ),
-            ),
-          ),
           chat.unreadMessage! > 0 ? circleMessageUnread(chat.unreadMessage ?? 0) : SizedBox(height: 0)
         ],
       ),
