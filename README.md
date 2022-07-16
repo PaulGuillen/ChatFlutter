@@ -4,11 +4,14 @@ _Este proyecto consta de un chat hecho en flutter(Dart), cuenta con tres pestañ
 
 ## Comenzando 🚀
 
-_En progreso..._
+En este caso mostraremos como funciona la aplicación móvil, el cual esta conectado a un endpoint programado en NodeJs 
 
 ### Pre-requisitos 📋
 
-_En progreso...._
+_Modelo de la base de datos._
+
+![imagen_1](https://user-images.githubusercontent.com/43099030/179368645-7ac7df2c-30c1-49ff-842a-ffd2209b57d3.png)
+
 
 ## Autor ✒️
 
