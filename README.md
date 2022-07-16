@@ -34,9 +34,18 @@ _Tener instalado PGADMIN , flutter puede ser en VSCODE o AndroidStudio, y alguna
   video_player: ^2.4.5
   chewie: ^1.3.4
 ```
+## Ejecutando los diseños ⚙️
+
+_Inicio de sesión y Registro de usuario_
+
+<p align="center">
+ <img src="https://i.postimg.cc/jq15NmjR/Screenshot-1657995066.png"/>
+ <img src="https://i.postimg.cc/Nfr0xDym/Screenshot-1657995069.png"/>
+</p>
+
+---
 
 
-_En progreso...._
 
 ## Autor ✒️
 
