@@ -1,6 +1,6 @@
 ## Flutter Chat
 
-_En progreso..._
+_Este proyecto el cual es un Chat consta de 3 secci_
 
 ## Comenzando 🚀
 
