@@ -17,6 +17,24 @@ _Ádemas mostraremos el modelo de la base de datos, el cual esta hecho en PGADMI
 
 ### Pre-requisitos 📋
 
+_Tener instalado PGADMIN , flutter puede ser en VSCODE o AndroidStudio, y algunas liberias para flutter._
+
+
+```
+  flutter_lints: ^1.0.0
+  get: ^4.6.1
+  get_storage: ^2.0.3
+  image_picker: ^0.8.5+3
+  http: ^0.13.4
+  sn_progress_dialog: ^1.0.8
+  intl: ^0.17.0
+  socket_io_client: ^1.0.2
+  flutter_image_compress: ^1.1.0
+  video_player: ^2.4.5
+  chewie: ^1.3.4
+```
+
+
 _En progreso...._
 
 ## Autor ✒️
