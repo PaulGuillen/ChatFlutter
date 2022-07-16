@@ -14,7 +14,7 @@ class ChatsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Lista de chats'),
+        title: Text('Lista chats'),
         automaticallyImplyLeading: false,
         backgroundColor: MyColors.primaryColor,
       ),
