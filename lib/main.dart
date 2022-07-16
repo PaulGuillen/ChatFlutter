@@ -24,23 +24,23 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
+    return  GetMaterialApp(
       title: 'Chat App Flutter',
       debugShowCheckedModeBanner: false,
       initialRoute: myUser.id != null ? '/home' : '/',
       getPages: [
-        GetPage(name: '/', page: () => LoginPage()),
-        GetPage(name: '/register', page: () => RegisterPage()),
-        GetPage(name: '/home', page: () => HomePage()),
-        GetPage(name: '/profile/edit', page: () => ProfileEditPage()),
-        GetPage(name: '/messages', page: () => MessagesPage()),
+        GetPage(name: '/' , page:() => LoginPage()),
+        GetPage(name: '/register' , page:() => RegisterPage()),
+        GetPage(name: '/home' , page:() => HomePage()),
+        GetPage(name: '/profile/edit' , page:() => ProfileEditPage()),
+        GetPage(name: '/messages' , page:() => MessagesPage()),
       ],
       theme: ThemeData(
           // colorScheme: const ColorScheme.light().copyWith(primary: MyColors.primaryColor),
-          primaryColor: MyColors.primaryColor),
+          primaryColor: MyColors.primaryColor
+      ),
       navigatorKey: Get.key,
     );
   }
