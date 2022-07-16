@@ -4,7 +4,9 @@ _Este proyecto el cual es un Chat consta de tres segmentos, el primero son los C
 
 ## Comenzando 🚀
 
-_En progreso..._
+_Este es el propuesto hecho en Bizagi, lo único que faltaría en este proyecto sería las validacion correspondientes como : "Si no hubiera usuarios o si no hubiera mensajes"_
+
+![Modelo_General](https://user-images.githubusercontent.com/43099030/179372365-65371de5-8ee8-4584-861d-6f0e5e993864.png)
 
 ### Pre-requisitos 📋
 
