@@ -4,6 +4,8 @@ _Este proyecto el cual es un Chat consta de tres segmentos, el primero son los C
 
 ## Comenzando 🚀
 
+_*Version Base del Proyecto._
+
 _Este es el propuesto hecho en Bizagi, lo único que faltaría en este proyecto sería las validacion correspondientes como : "Si no hubiera usuarios o si no hubiera mensajes"_
 
 ![Modelo_General](https://user-images.githubusercontent.com/43099030/179372365-65371de5-8ee8-4584-861d-6f0e5e993864.png)
@@ -45,7 +47,21 @@ _Inicio de sesión y Registro de usuario_
 
 ---
 
+_Tres segmentos principales _
 
+<p align="center">
+ <img src="https://i.postimg.cc/VNzLmcKW/Screenshot-1657995085.png"/>
+ <img src="https://i.postimg.cc/2yWV37hQ/Screenshot-1657995588.png"/>
+ <img src="https://i.postimg.cc/BZP8h4kj/Screenshot-1657995590.png"/>
+</p>
+
+---
+
+_Perfil del usuario_
+<p align="center">
+ <img src="https://i.postimg.cc/Y0RCSqyf/Screenshot-1658003375.png"/>
+
+</p>
 
 ## Autor ✒️
 
