@@ -8,6 +8,13 @@ _Este es el propuesto hecho en Bizagi, lo único que faltaría en este proyecto 
 
 ![Modelo_General](https://user-images.githubusercontent.com/43099030/179372365-65371de5-8ee8-4584-861d-6f0e5e993864.png)
 
+---
+
+_Ádemas mostraremos el modelo de la base de datos, el cual esta hecho en PGADMIN(SQL)_
+
+![Modelo Base de Datos](https://user-images.githubusercontent.com/43099030/179372452-182a4364-5eaf-4fb1-a127-c707688614ec.png)
+
+
 ### Pre-requisitos 📋
 
 _En progreso...._
