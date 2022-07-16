@@ -17,8 +17,9 @@ _Ádemas mostraremos el modelo de la base de datos, el cual esta hecho en PGADMI
 
 ### Pre-requisitos 📋
 
-_Tener instalado PGADMIN , flutter puede ser en VSCODE o AndroidStudio, y algunas liberias para flutter._
+* Nota : Si deseas tener el backend que esta realizado en NodeJS, enviame un correo o contactame conmigo via LinkedIn.
 
+_Tener instalado PGADMIN , flutter puede ser en VSCODE o AndroidStudio, y algunas liberias para flutter._
 
 ```
   flutter_lints: ^1.0.0
