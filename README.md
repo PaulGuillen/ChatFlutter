@@ -68,7 +68,7 @@ _Perfil del usuario_
 
 ## Video 📄
 
-_En progreso...._
+_Realizando..._
 
 ## Autor ✒️
 
