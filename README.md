@@ -57,7 +57,7 @@ _Tres segmentos principales._
 
 ---
 
-_Perfil del usuario_
+_Perfil del usuario._
 <p align="center">
  <img src="https://i.postimg.cc/Y0RCSqyf/Screenshot-1658003375.png"/>
 
