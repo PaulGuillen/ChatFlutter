@@ -38,7 +38,7 @@ _Tener instalado PGADMIN , flutter puede ser en VSCODE o AndroidStudio, y alguna
 ```
 ## Ejecutando los diseños ⚙️
 
-_Inicio de sesión y Registro de usuario_
+_Inicio de sesión y Registro de usuario._
 
 <p align="center">
  <img src="https://i.postimg.cc/jq15NmjR/Screenshot-1657995066.png"/>
