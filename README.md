@@ -47,7 +47,7 @@ _Inicio de sesión y Registro de usuario_
 
 ---
 
-_Tres segmentos principales _
+_Tres segmentos principales_
 
 <p align="center">
  <img src="https://i.postimg.cc/VNzLmcKW/Screenshot-1657995085.png"/>
@@ -68,7 +68,10 @@ _Perfil del usuario_
 
 ## Video 📄
 
-_Realizando..._
+_Algunas funcionalidades de la app._
+
+https://user-images.githubusercontent.com/43099030/180673945-9e674395-9b94-42a2-a493-39186b58bb8e.mp4
+
 
 ## Autor ✒️
 
