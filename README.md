@@ -47,7 +47,7 @@ _Inicio de sesión y Registro de usuario._
 
 ---
 
-_Tres segmentos principales_
+_Tres segmentos principales._
 
 <p align="center">
  <img src="https://i.postimg.cc/VNzLmcKW/Screenshot-1657995085.png"/>
