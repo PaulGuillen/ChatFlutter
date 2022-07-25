@@ -19,7 +19,7 @@ _Ádemas mostraremos el modelo de la base de datos, el cual esta hecho en PGADMI
 
 ### Pre-requisitos 📋
 
-* Nota : Si deseas tener el backend que esta realizado en NodeJS, enviame un correo o contactame conmigo via LinkedIn.
+* Nota : Si deseas tener el backend que esta realizado en NodeJS, enviame un correo o contactame conmigo via [LinkedIn](https://www.linkedin.com/in/paul-guillen-acu%C3%B1a-61ab9319a/).
 
 _Tener instalado PGADMIN , flutter puede ser en VSCODE o AndroidStudio, y algunas liberias para flutter._
 
