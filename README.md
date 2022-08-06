@@ -70,7 +70,7 @@ _Perfil del usuario._
 
 ## Video 📄
 
-_Algunas funcionalidades de la aplicación movil, son avances._
+_Algunas funcionalidades de la aplicación móvil, son avances._
 
 https://user-images.githubusercontent.com/43099030/180673945-9e674395-9b94-42a2-a493-39186b58bb8e.mp4
 
