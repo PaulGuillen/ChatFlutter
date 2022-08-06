@@ -8,7 +8,7 @@ _Este proyecto el cual es un Chat consta de tres segmentos, el primero es la pes
 
 _Version Base del Proyecto._
 
-_Este es el modelo propuesto hecho en Bizagi, lo único que faltaría en este proyecto sería las validación correspondientes como : "Si no hubiera usuarios o si no hubiera mensajes"_
+_Este es el modelo propuesto hecho en Bizagi, lo único que faltaría en este proyecto sería las validación correspondientes como : "Si no hubiera usuarios o si no hubiera mensajes"._
 
 ![Modelo_General](https://user-images.githubusercontent.com/43099030/179372365-65371de5-8ee8-4584-861d-6f0e5e993864.png)
 
