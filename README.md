@@ -14,7 +14,7 @@ _Este es el modelo propuesto hecho en Bizagi, lo único que faltaría en este pr
 
 ---
 
-_Ádemas mostraremos el modelo de la base de datos, el cual esta hecho en PGADMIN(SQL)_
+_Ádemas mostraremos el modelo de la base de datos, el cual esta hecho en PGADMIN(SQL) -> Es autogenerable._
 
 ![Modelo Base de Datos](https://user-images.githubusercontent.com/43099030/179372452-182a4364-5eaf-4fb1-a127-c707688614ec.png)
 
