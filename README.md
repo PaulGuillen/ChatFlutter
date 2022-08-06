@@ -2,7 +2,7 @@
 
 _El proyecto sigue en modificaciones...._
 
-_Este proyecto el cual es un Chat consta de tres segmentos, el primero es la pestaña Chats(esta pestaña mostrará cada chat creado previamente), el segundo segmento es la pestaña Usuarios (muestra los usuarios existentes en la aplicación móvil) y por último se muestra el segmento Perfil (Muestra los datos del usuario que previamente inicio sesión)_
+_Este proyecto es un Chat consta de tres segmentos, el primero es la pestaña Chats(esta pestaña mostrará cada chat creado previamente), el segundo segmento es la pestaña Usuarios (muestra los usuarios existentes en la aplicación móvil) y por último se muestra el segmento Perfil (Muestra los datos del usuario que previamente inicio sesión)_
 
 ## Comenzando 🚀
 
